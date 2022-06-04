@@ -1,1 +1,1 @@
-# awsome-daily
+# Daily-Awesome

@@ -27,18 +27,19 @@ MongoClient.connect(
 		db = client.db('testdb');
 
 		// 작성
+
 		app.post('/login', (req, res) => {
-			res.send(console.log('완료'));
+		  
 			const title = req.body.title;
 			const textarea = req.body.textarea;
 			db.collection('counter').findOne({ name:'totalPost'}, (error, result)=>{
 				let totalPost = result.totalPost; 
-				console.log(totalPost);
 
 			db.collection('post').insertOne({ _id : totalPost + 1 , title: title, textarea: textarea }, (error, result) => { error ? console.log(`increse ${error}`) : console.log(result);
 
 				db.collection('counter').updateOne({name: 'totalPost'},{ $inc:{totalPost: 1}}, (errer,result)=> errer ? console.log(errer) : console.log(result));
 				//$set, $inc.. 연산자. $set은 바꿀것 
+				res.redirect('http://localhost:8080/set');
 			});
 			});
 		});

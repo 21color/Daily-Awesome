@@ -19,7 +19,8 @@
           box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   color: #28282d;
   list-style-type: none;
   font-size: 62.5%;
@@ -74,13 +75,15 @@ ul {
 
 p {
   padding: 1rem;
+  font-size: 1.2rem;
 }
 
 .testList button {
   border: none;
   background: #28282d;
-  padding: .2rem;
+  padding: .5rem;
   font-family: 'LeferiPoint-WhiteObliqueA';
   color: white;
   cursor: pointer;
+  border-radius: .4rem;
 }

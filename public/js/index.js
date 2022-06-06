@@ -8,6 +8,7 @@
  */
 
 // express 호출
+const { log } = require('console');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 let db;
 const MongoClient = require('mongodb').MongoClient;
 app.set('view engine', 'pug');
-app.set('views','./views');
+app.set('views', '../views');
 
 MongoClient.connect(
 	'mongodb+srv://admin:fjqlddb1993!@cluster0.nddtc.mongodb.net/?retryWrites=true&w=majority',
@@ -24,18 +25,24 @@ MongoClient.connect(
 		//연결되면 ? = >
 		if (error) return console.log(error);
 		db = client.db('testdb');
+
+		// 작성
 		app.post('/login', (req, res) => {
-		
 			res.send(console.log('완료'));
 			const title = req.body.title;
 			const textarea = req.body.textarea;
-			db.collection('post').insertOne({ title: title, textarea: textarea }, (error, result) => {
-				console.log(`title: ${title}, textarea: ${textarea}`);
+			db.collection('counter').findOne({ name:'totalPost'}, (error, result)=>{
+				let totalPost = result.totalPost; 
+				console.log(totalPost);
+
+			db.collection('post').insertOne({ _id : totalPost + 1 , title: title, textarea: textarea }, (error, result) => { error ? console.log(`increse ${error}`) : console.log(result);
+
+				db.collection('counter').updateOne({name: 'totalPost'},{ $inc:{totalPost: 1}}, (errer,result)=> errer ? console.log(errer) : console.log(result));
+				//$set, $inc.. 연산자. $set은 바꿀것 
 			});
-			app.get('/login', (req, res)=> {
-				res.render('login', {title: title, textarea: textarea});
-			})
+			});
 		});
+
 		app.listen(8080, () => {
 			console.log('listening on 8080');
 		}); // lishten ==> server open (8080 port)
@@ -63,3 +70,24 @@ app.get('/test', (req, res) => {
 // 	res.sendFile(path.join(__dirname, '../html', 'login.html'));
 // 	console.log(req.body);
 // })
+
+//읽기기능
+app.get('/set', (req, res) => {
+	db.collection('post')
+		.find()
+		.toArray((error, result) => {
+			error ? console.log(error) : console.log(result);
+			res.render('login', {posts : result});
+	console.log('login set');
+		});
+});
+
+app.delete('/delete', (req, res) => {
+	console.log(req.body._id);
+	req.body._id = parseInt(req.body._id);
+
+	db.collection('post').deleteOne(req.body, (error, result)=> {
+		error ?	console.log(`delete error : ${error}`) :
+		res.status(200).send({ message : '성공완 :)' });
+	})
+})

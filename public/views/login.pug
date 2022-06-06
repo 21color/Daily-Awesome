@@ -5,8 +5,19 @@ html(lang="ko")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="../css/login.css")
+    script(src="../js/login.js" defer)
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
     title Awesome diary_login
   body
-    h1 This is test at login
-    h1 할일? #{title}
-    p 세부내용? #{textare}
+    header 
+      h1 This is test at login
+  
+    section.mainwapper
+      each value in posts
+        ul.testList 
+          li.listTitle
+            h3 할일목록 
+            p #{value.title}
+            h4 세부내용
+            p #{value.textarea}
+            button.deletebtn(data-id=value._id) 삭제

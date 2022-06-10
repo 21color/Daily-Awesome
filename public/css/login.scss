@@ -1,0 +1,94 @@
+@charset 'utf-8';
+
+@font-face {
+   font-family: 'GabiaMaeumgyeol';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/GabiaMaeumgyeol.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'LeferiPoint-WhiteObliqueA';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+
+$fontFamilyColor : #28282d;
+$headerColor : rgb(255, 191, 0);
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html,
+body {
+
+   color: $fontFamilyColor;
+   list-style-type: none;
+   font-size: 62.5%;
+   font-family: 'LeferiPoint-WhiteObliqueA';
+
+}
+
+header {
+   position: fixed;
+   width: 100vw;
+   top: 0;
+   padding: 2rem;
+   letter-spacing: .1rem;
+   background: $headerColor;
+}
+
+section {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: auto;
+   padding: 1rem;
+   background: #28282d;
+   width: 100vw;
+   height: 100vh;
+   text-align: center;
+   align-content: center;
+
+}
+
+ul {
+   padding: 1rem;
+   list-style: none;
+
+
+}
+
+.testList li {
+   border-radius: .5rem;
+   box-shadow: 1rem 1rem 4rem rgba(128, 128, 128, 0.346);
+   background: whitesmoke;
+   margin: 1rem;
+   padding: 1rem;
+}
+
+.testList li h3,
+.testList li h4 {
+   font-size: 2rem;
+   color: #ffcf73;
+   padding: .5rem;
+
+}
+
+p {
+   padding: 1rem;
+   font-size: 1.2rem;
+}
+
+.testList button {
+   border: none;
+   background: #28282d;
+   padding: .5rem;
+   font-family: 'LeferiPoint-WhiteObliqueA';
+   color: white;
+   cursor: pointer;
+   border-radius: .4rem;
+}

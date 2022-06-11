@@ -27,6 +27,13 @@ body {
   font-family: 'LeferiPoint-WhiteObliqueA';
 }
 
+@media all and (max-width: 767px) {
+  html,
+  body {
+    font-size: 50%;
+  }
+}
+
 header {
   position: fixed;
   width: 100vw;
@@ -34,22 +41,33 @@ header {
   padding: 2rem;
   letter-spacing: .1rem;
   background: #ffbf00;
+  height: 5rem;
 }
 
 section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
   padding: 1rem;
   background: #28282d;
   width: 100vw;
+  margin-top: 5rem;
   height: 100vh;
   text-align: center;
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+@media all and (max-width: 767px) {
+  section {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[5];
+        grid-template-rows: repeat(5, 1fr);
+  }
 }
 
 ul {

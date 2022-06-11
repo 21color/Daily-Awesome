@@ -25,6 +25,9 @@ $headerColor : rgb(255, 191, 0);
 
 html,
 body {
+   @media all and(max-width:767px) {
+      font-size: 50%;
+   }
 
    color: $fontFamilyColor;
    list-style-type: none;
@@ -40,15 +43,21 @@ header {
    padding: 2rem;
    letter-spacing: .1rem;
    background: $headerColor;
+   height: 5rem;
 }
 
 section {
+   @media all and (max-width:767px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(5 , 1fr);
+   }
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-template-rows: auto;
+   grid-template-columns: repeat(5, 1fr);
+   grid-template-rows: repeat(5, 1fr);
    padding: 1rem;
    background: #28282d;
    width: 100vw;
+   margin-top: 5rem;
    height: 100vh;
    text-align: center;
    align-content: center;
